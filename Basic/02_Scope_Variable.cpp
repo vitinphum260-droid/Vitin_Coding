@@ -7,7 +7,7 @@ int main() {
         int b = 5;
         cout <<"block variable b: "<< b <<endl;
         cout <<"block variable i: "<< i <<endl;
-        cout <<"block variable g: "<< ::g <<endl;
+        cout <<"block variable g: "<< ::g <<endl; // use scope resolution operator
     }
     cout <<endl;
     cout <<"value of variable g: "<< g <<endl;
