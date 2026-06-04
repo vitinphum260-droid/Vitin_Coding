@@ -1,7 +1,22 @@
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
+struct BankAccount{
+    string decide, get;
+    char choice;
+};
+struct Banker{
+    float balance = 10000;
+    float cash;
+    float sum = 0, minus = 0;
+};
+struct BankBonus{
+    float multiplication = 0;
+    float bonus;
+};
+struct BankSavingAccount{
+    float divisionFirst = 0, divisionSecond = 0;
+};
 int main() {
     //1. Bank Account System
     //2. Which one do you want to choose (input or withdraw money), Press (i) for input and (w) for withdraw:
@@ -30,7 +45,7 @@ int main() {
     }else{
         cout <<"How many cash, Do you want to withdraw:$ ";
         cin>>withdraw;
-        if(withdraw < balance){
+        if(withdraw <= balance){
             minus = balance - withdraw;
             cout <<"The withdraw is: -"<< withdraw <<"$"<<endl;
             cout <<"Your Banker is: "<< minus <<"$"<<endl;
@@ -40,15 +55,18 @@ int main() {
         }
     }
     //Check condition
+    bool isBonus;
     cout <<"=============Bonus From Bank========================="<<endl;
     if(sum > balance){
         cout <<"You get bonus from your bank."<<endl;
+        isBonus = true;
     }else{ 
         cout<<"You don't get bonus from your bank."<<endl;
+        isBonus = false;
     }
     //Use Multiplication
-    cout <<"Does the bank gives you a 2% of bonus?(Yes or No): "; cin.ignore(), getline(cin, get);
-    if((get == "Yes" || get == "yes") && sum > balance ){
+    //cout <<"Does the bank gives you a 2% of bonus?(Yes or No): "; cin.ignore(), getline(cin, get);
+    if(isBonus && sum > balance ){
         multiplication = balance * 1.02; // must to set this one again and think deep, 10000$ of 2% bonus 
         bonus = multiplication - balance;
         cout <<"Your bonus's banker is: "<< multiplication <<"$"<<endl;
@@ -62,7 +80,7 @@ int main() {
     (choice == 'i' || choice == 'I') ? cout <<"Your Total Banker is: "<< sum <<"$"<<endl : cout <<"Your Total Banker is: "<< minus <<"$"<<endl;
     cout <<"===============Saving Bank==============================="<<endl;
     cout <<"Do you want to move half your money into a (Saving) account and half into (Spending)?(Yes or No): ";
-    getline(cin, decide);
+    cin.ignore(), getline(cin, decide);
     if((decide == "Yes" || decide == "yes") && sum == balance ){
         division = balance / 2;
         cout <<"1.Your saving accout get: "<< division <<"$"<<endl;
@@ -90,7 +108,7 @@ int main() {
     }
     cout <<"==================Bank Account System====================="<<endl;
     cout <<"The balance is: "<< balance <<"$"<<endl;
-    cout <<"Your banker is: "<< sum <<"$"<<endl;
+    cout <<"Your banker after input cash is: "<< sum <<"$"<<endl;
     cout <<"Your banker after multiply 2% of bonus is: "<< multiplication <<"$"<<endl;
     cout <<"Your bonus is: "<< bonus <<"$"<<endl;
     cout <<"Your saving accout get: "<< divisionFirst <<"$"<<endl; // 2
