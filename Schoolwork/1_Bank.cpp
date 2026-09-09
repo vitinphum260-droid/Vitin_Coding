@@ -1,22 +1,6 @@
 #include <iostream>
 #include <string>
 using namespace std;
-struct BankAccount{
-    string decide, get;
-    char choice;
-};
-struct Banker{
-    float balance = 10000;
-    float cash;
-    float sum = 0, minus = 0;
-};
-struct BankBonus{
-    float multiplication = 0;
-    float bonus;
-};
-struct BankSavingAccount{
-    float divisionFirst = 0, divisionSecond = 0;
-};
 int main() {
     //1. Bank Account System
     //2. Which one do you want to choose (input or withdraw money), Press (i) for input and (w) for withdraw:
